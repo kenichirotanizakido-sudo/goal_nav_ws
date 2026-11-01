@@ -1,0 +1,38 @@
+# ros_gz_bridge の設定: ROS 2 と Gazebo の間でやりとりするトピック
+# （参考: 2DRoboPrac_ws の config/nav_slam.yaml。Gazebo の新しい版では ignition.msgs が gz.msgs になった）
+
+# シミュレーションの時計
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# 速度の指令（ROS 2 → Gazebo）
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ
+
+# ロボットの位置と向き
+- ros_topic_name: "/odom"
+  gz_topic_name: "/odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# LiDAR
+- ros_topic_name: "/scan"
+  gz_topic_name: "/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+# 動画撮影用カメラの映像（録画するときだけ流れる: lazy）
+- ros_topic_name: "/video_camera/image"
+  gz_topic_name: "/video_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+  lazy: true

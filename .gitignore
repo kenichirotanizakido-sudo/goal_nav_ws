@@ -1,0 +1,15 @@
+# colcon のビルド結果
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+
+# 動画・rosbag
+*.mp4
+bag_*/
+
+# 説明資料（omnicampus に PDF で提出するので、リポジトリには入れない）
+report/
